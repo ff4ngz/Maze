@@ -5,6 +5,7 @@ import java.awt.event.*;
 public class Game extends JPanel implements Runnable, KeyListener{
 private BufferedImage back;
 private int key;
+private image icon;
 public Game() {
 new Thread(this).start();
 this.addKeyListener(this);
