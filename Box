@@ -1,0 +1,27 @@
+public class Box {
+private int x;
+private int y;
+private int dx;
+public Box()
+{
+x=200;
+y=300;
+dx=0;
+}
+public int getX()
+{
+return x;
+}
+public int getY()
+{
+return y;
+}
+public void move()
+{
+x+=dx;
+}
+public void setDx(int dxFromGame)
+{
+dx= dxFromGame;
+}
+}
