@@ -1,0 +1,87 @@
+import javax.swing.*;
+
+import javafx.scene.layout.Background;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.event.*;
+public class Game extends JPanel implements Runnable, KeyListener{
+private BufferedImage back;
+private int key;
+private ImageIcon background;
+private boolean spacebar;
+public class BackImage extends JFrame {
+
+	public void main(String args[]) {
+		new BackImage();
+	}
+}
+public Game() {
+    background = new ImageIcon ("");
+spacebar = false;
+    Player p=new Player() ;
+    p.playmusic("Lost.wav");
+new Thread(this).start();
+this.addKeyListener(this);
+key =-1;
+}
+
+public void run()
+{
+try
+{
+while(true)
+{
+Thread.currentThread().sleep(5);
+repaint();
+}
+}
+catch(Exception e)
+{
+}
+}
+public void paint(Graphics g){
+Graphics2D twoDgraph = (Graphics2D) g;
+if( back ==null)
+back=(BufferedImage)( (createImage(getWidth(), getHeight())));
+Graphics g2d = back.createGraphics();
+g2d.clearRect(0,0,getSize().width, getSize().height);
+g2d.setFont( new Font("Broadway", Font.BOLD, 50));
+
+Color lightBrown = new Color(196, 164, 132);
+
+g2d.setColor(lightBrown);
+g2d.fillRect(0,800,420,100);
+g2d.fillRect(320,300,100,500);
+g2d.fillRect(320,300,500,100);
+g2d.fillRect(820,0,100,400);
+g2d.fillRect(900,0,600,100);
+g2d.fillRect(1500,0,100,800);
+g2d.fillRect(1500,800,600,75);
+
+Color DarkBlue = new Color(2,7,93);
+g2d.setColor(DarkBlue);
+g2d.fillOval(500, 500, 900, 700);
+g2d.fillOval(900, 300, 600, 800);
+g2d.fillOval(700, 400, 600, 800);
+
+twoDgraph.drawImage(back, null, 0, 0);
+}
+//DO NOT DELETE
+@Override
+public void keyTyped(KeyEvent e) {
+// TODO Auto-generated method stub
+}
+//DO NOT DELETE
+@Override
+public void keyPressed(KeyEvent e) {
+// TODO Auto-generated method stub
+key= e.getKeyCode();
+System.out.println(key);
+}
+//DO NOT DELETE
+@Override
+public void keyReleased(KeyEvent e) {
+}
+}
+
