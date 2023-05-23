@@ -1,0 +1,63 @@
+ import javax.swing.ImageIcon;
+public class Box {
+  private int x;
+	private int y;
+	private int dx;
+	private int w, h;
+	private ImageIcon img;
+	
+  public Box()
+	{
+		x=30;
+		y=30;
+		dx=1;
+		w = 50;
+		h = 3;
+		img = new ImageIcon("Lost2.png");
+	
+	}
+	public void setX (int xV) {
+		x+=xV;
+	}
+	public void setY (int yV) {
+		y=yV;
+	}
+	public int getX()
+	{
+		return x;
+	}
+	
+	public int getY()
+	{
+		return y;
+	}
+	
+	public void setW (int wV) {
+		w=wV;
+	}
+	public void setH (int hV) {
+		h=hV;
+	}
+	public int getW()
+	{
+		return w;
+	}
+	public ImageIcon getImg () {
+		return img; 
+	}
+	
+	public int getH()
+	{
+		return h;
+	}
+	public void move()
+	{
+		x+=dx;
+		
+	}
+	
+	public void setDx(int dxFromGame)
+	{
+		dx= dxFromGame;
+	}
+}
