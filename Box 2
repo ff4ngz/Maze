@@ -1,0 +1,50 @@
+private Box purple, green;
+
+purple = new Box ();
+	green = new Box (-300,400);
+  
+  
+  Down the screen
+  public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+		key= e.getKeyCode();
+		System.out.println(key);
+		if(key==32) {
+			spacebar=true;
+			
+		}
+		if(key==68) {  
+			purple.setX(20);
+			
+		}
+		if(key==65) {  
+			purple.setX(-20);
+		}
+		if(key==87) {  
+			purple.setY(20);
+		}
+		if(key==83) {  
+			purple.setY(500);
+		}
+		
+		if(key==39) {  
+			green.setX(20);
+			
+		}
+		if(key==37) {  
+			green.setX(-20);
+		}
+		if(key==38) {  
+			green.setY(20);
+		}
+		if(key==40) {  
+			green.setY(-20);
+		}
+
+	}
+
+
+	//DO NOT DELETE
+	@Override
+	public void keyReleased(KeyEvent e) {
