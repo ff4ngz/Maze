@@ -1,0 +1,157 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage; 
+import java.awt.event.*; 
+
+
+public class Game  extends JPanel implements Runnable, KeyListener{
+
+
+	private BufferedImage back; 
+	private int key; 
+	private boolean spacebar;
+	private Box purple, green;
+	private ImageIcon background;
+	
+	public Game() {
+		new Thread(this).start();	
+		this.addKeyListener(this);
+		//key =-1; 
+		background = new ImageIcon ("background.png.png");
+		spacebar = false;
+		purple = new Box ();
+	green = new Box (-300,400);
+	
+	back=null;
+	Player p =new Player ();
+	p.playmusic("Phantom.wav");
+		
+	}
+
+
+
+	public void run()
+	{
+		try
+		{
+			while(true)
+			{
+				Thread.currentThread().sleep(5);
+				repaint();
+			}
+		}
+		catch(Exception e)
+		{
+		}
+	}
+
+
+
+
+
+	public void paint(Graphics g){
+
+		Graphics2D twoDgraph = (Graphics2D) g; 
+		if( back ==null)
+			back=(BufferedImage)( (createImage(getWidth(), getHeight()))); 
+		
+
+		Graphics g2d = back.createGraphics();
+
+		g2d.clearRect(0,0,getSize().width, getSize().height);
+	
+
+		g2d.setFont( new Font("Broadway", Font.BOLD, 50));
+
+		g2d.drawString("key " + key, 340, 100);
+
+		Color pur = new Color (255,0,255);
+		g2d.setColor(pur);
+		
+
+		if (spacebar) {
+			g2d.drawString ("DRIVE!!!", 100,300);   
+			g2d.drawImage(background.getImage(),0,0,getWidth(),getHeight(),this);
+			g2d.drawImage(purple.getImg().getImage(),purple.getX(), purple.getY(), purple.getW()-80, purple.getH()+70,this);
+					
+			g2d.drawImage(green.getImg().getImage (),green.getX(), green.getY()+330,green.getW()-700, green.getH()+500,this);
+			
+			
+		}
+
+		twoDgraph.drawImage(back, null, 0, 0);
+
+	}
+
+public ImageIcon getImg() {
+	return background;
+}
+
+
+
+	//DO NOT DELETE
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+
+
+
+	//DO NOT DELETE
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+		key= e.getKeyCode();
+		System.out.println(key);
+		if(key==32) {
+			spacebar=true;
+			
+		}
+		if(key==68) {  
+			purple.setX(20);
+			
+		}
+		if(key==65) {  
+			purple.setX(-20);
+		}
+		if(key==87) {  
+			purple.setY(20);
+		}
+		if(key==83) {  
+			purple.setY(500);
+		}
+		
+		if(key==39) {  
+			green.setX(20);
+			
+		}
+		if(key==37) {  
+			green.setX(-20);
+		}
+		if(key==38) {  
+			green.setY(20);
+		}
+		if(key==40) {  
+			green.setY(-20);
+		}
+
+	}
+
+
+	//DO NOT DELETE
+	@Override
+	public void keyReleased(KeyEvent e) {
+
+
+
+
+	}
+
+
+
+
+
+}
